@@ -1,0 +1,79 @@
+.app {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  margin-top: 30px;
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #006F8F;
+}
+.property-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.property-bar-label {
+  margin-bottom: 8px;
+}
+
+.property-bar-container {
+  width: 100%;
+  height: 16px;
+  background-color: #d8d8d8;
+  border-radius: 8px;
+}
+
+.property-bar-progress {
+  height: 100%;
+  border-radius: 8px;
+}
+
+.property-bar-progress-green {
+  background-color: green;
+}
+
+.property-bar-progress-yellow {
+  background-color: yellow;
+}
+
+.property-bar-progress-red {
+  background-color: red;
+}
+
+.tamagotchi{
+  border: black solid 2px;
+  
+}
+.avatar{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.buttons{
+  margin-bottom: 10px;
+}
+.statusBars{
+  width: 80%;
+  margin: auto;
+}
