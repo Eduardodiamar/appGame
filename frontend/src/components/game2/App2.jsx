@@ -2,7 +2,7 @@ import React from 'react';
 import Tamagotchi from './Tamagotchi';
 import './App.css';
 
-const App2 = () => {
+const Game2 = () => {
   const reset = () => {
     window.location.reload();
   };
@@ -23,4 +23,4 @@ const App2 = () => {
   );
 };
 
-export default App2;
+export default Game2;
