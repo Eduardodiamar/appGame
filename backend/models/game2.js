@@ -27,6 +27,8 @@ const tamagotchiSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+},{
+  versionKey: false
 });
 
 const Tamagotchi = mongoose.model('Tamagotchi', tamagotchiSchema);
