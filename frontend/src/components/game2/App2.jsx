@@ -12,7 +12,7 @@ const Game2 = () => {
   };
 
   return (
-    <div className="app bg-gray-800 text-white">
+    <div className="app bg-gray-800 text-white h-screen">
       <h1>Tamagotchi</h1>
       <Tamagotchi />
       <div className="buttons">
