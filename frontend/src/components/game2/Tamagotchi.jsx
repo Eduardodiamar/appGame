@@ -28,21 +28,53 @@ const Tamagotchi = () => {
         setCleanliness(cleanliness => cleanliness - 1);
         setEnergy(energy => energy - 1);
         setAge(age => age + 0.1);
-      }, 1000);
+      }, 100);
       return () => clearInterval(interval);
     }
   }, [playing]);
-  
+
   useEffect(() => {
     if (health <= 0) {
-      setPlaying(false);
+      endGame()
     }
   }, [health]);
-  
+
   const handleStart = () => {
     setPlaying(true);
     setIsName(true)
   };
+  const endGame = () => {
+    setPlaying(false);
+    const tamagotchiData = {
+      fechaNacimiento: date,
+      nombre: name,
+      nivelSalud: health,
+      nivelEnergia: energy,
+      nivelFelicidad: happiness,
+    };
+
+    // Realizar la solicitud POST a la API
+    fetch('http://localhost:3000/mascotas', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(tamagotchiData),
+    })
+      .then((response) => {
+        // Manejar la respuesta de la API
+        if (response.ok) {
+          console.log('Datos del Tamagotchi enviados correctamente.');
+        } else {
+          console.log('Error al enviar los datos del Tamagotchi.');
+        }
+      })
+      .catch((error) => {
+        console.log('Error en la solicitud POST:', error);
+      });
+  };
+
+
   let play = () => {
     if (happiness <= 80 && energy >= 10) {
       setHappiness(happiness + 20);
@@ -129,7 +161,7 @@ const Tamagotchi = () => {
       )}
     </>
   );
+}
 
-};
 
 export default Tamagotchi;

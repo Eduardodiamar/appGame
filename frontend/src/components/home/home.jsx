@@ -26,6 +26,11 @@ const Home = () => {
       </nav>
       <div>
         <h2 className='mt-5'>Records:</h2>
+        <Link to="/records">
+          <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-3">
+            Records
+          </button>
+        </Link>
       </div>
     </div>
   );

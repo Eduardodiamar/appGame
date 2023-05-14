@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const port = 3000;
+const game1 = require('./routes/game1');
+const game2 = require('./routes/game2');
 mongoose.connect('mongodb+srv://eduardodiamar:monlau@cluster0.lk08wmr.mongodb.net/appgames', {
     useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -19,6 +21,9 @@ db.once('open', () => {
 const app = express();
 
 app.use(express.json());
+
+app.use('/partidas', game1);
+app.use('/mascotas', game2);
 
 app.listen(port, () => {
 

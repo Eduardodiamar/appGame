@@ -5,7 +5,7 @@ const tamagotchiSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  nivelHambre: {
+  nivelSalud: {
     type: Number,
     default: 100,
     min: 0,

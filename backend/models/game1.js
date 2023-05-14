@@ -14,6 +14,8 @@ const partidaSchema = new mongoose.Schema({
     enum: ['Ganó el jugador', 'Ganó la computadora', 'Empate'],
     required: true
   }
+},{
+  versionKey: false
 });
 
 const Partida = mongoose.model('s', partidaSchema);
