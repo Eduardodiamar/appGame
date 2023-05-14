@@ -51,6 +51,28 @@ function useChoices() {
 
         setTimeout(() => {
             setResult(getResult(choice, randomChoice))
+            const gameResult = {
+                jugador:'edu',
+                resultado: getResult(choice, randomChoice)
+            }
+            fetch('http://localhost:3000/rpsls', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(gameResult),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log('Datos de la partida enviados correctamente.');
+                    } else {
+                        
+                        console.log('Error al enviar los datos de la partida.');
+                    }
+                })
+                .catch((error) => {
+                    console.log('Error en la solicitud POST:', error);
+                });
         }, 3000);
 
         clearTimeout()

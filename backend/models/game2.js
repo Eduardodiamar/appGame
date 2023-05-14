@@ -25,11 +25,11 @@ const tamagotchiSchema = new mongoose.Schema({
   },
   fechaNacimiento: {
     type: Date,
-    default: Date.now
+    required: true
   }
-},{
-  versionKey: false
-});
+}, {
+  versionKey: false,
+})
 
 const Tamagotchi = mongoose.model('Tamagotchi', tamagotchiSchema);
 

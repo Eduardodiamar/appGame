@@ -5,12 +5,12 @@ function Records() {
   const [partidas, setPartidas] = useState([]);
   const [mascotas, setMascotas] = useState([]);
   const fetchPartidas = async () => {
-    const response = await fetch('http://localhost:3000/partidas');
+    const response = await fetch('http://localhost:3000/rpsls');
     const jsonData = await response.json();
     setPartidas(jsonData);
   };
   const fetchMascotas = async () => {
-    const response = await fetch('http://localhost:3000/mascotas');
+    const response = await fetch('http://localhost:3000/tamagotchi');
     const jsonData = await response.json();
     setMascotas(jsonData);
   };
@@ -20,13 +20,13 @@ function Records() {
   useEffect(() => {
     fetchPartidas();
   }, []);
-    
+
   const handleGameClick = (game) => {
     setSelectedGame(game);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-red-800">
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-800">
       <div className="rounded-lg p-8 bg-white">
         <div className="max-w-md mx-auto">
           <h1 className="text-3xl mb-4 text-center font-bold">Registros</h1>
@@ -64,7 +64,7 @@ function Records() {
                   {mascotas.map((tamagotchi) => (
                     <tr key={tamagotchi._id}>
                       <td>{tamagotchi.nombre}</td>
-                      <td>{tamagotchi.nivelHambre}</td>
+                      <td>{tamagotchi.nivelSalud}</td>
                       <td>{tamagotchi.nivelEnergia}</td>
                       <td>{tamagotchi.nivelFelicidad}</td>
                       <td>{tamagotchi.fechaNacimiento}</td>
@@ -74,7 +74,6 @@ function Records() {
               </table>
             </div>
           )}
-
           {selectedGame === "rpsls" && (
             <div>
               <table>
@@ -90,7 +89,15 @@ function Records() {
                     <tr key={partida._id}>
                       <td>{partida.fecha}</td>
                       <td>{partida.jugador}</td>
-                      <td>{partida.resultado}</td>
+                      {partida.resultado === "1" ? (
+                        <td>Ganó el jugador</td>
+                      ) : partida.resultado === "2" ? (
+                        <td>Ganó la computadora</td>
+                      ) : partida.resultado === "3" ? (
+                        <td>Empate</td>
+                      ) : (
+                        <td>Resultado desconocido</td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
@@ -106,5 +113,6 @@ function Records() {
       </Link>
     </div>
   );
+  
 }
 export default Records;

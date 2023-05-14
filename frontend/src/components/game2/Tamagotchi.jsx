@@ -46,15 +46,14 @@ const Tamagotchi = () => {
   const endGame = () => {
     setPlaying(false);
     const tamagotchiData = {
-      fechaNacimiento: date,
       nombre: name,
+      fechaNacimiento: date,
       nivelSalud: health,
       nivelEnergia: energy,
       nivelFelicidad: happiness,
     };
 
-    // Realizar la solicitud POST a la API
-    fetch('http://localhost:3000/mascotas', {
+    fetch('http://localhost:3000/tamagotchi', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -66,6 +65,7 @@ const Tamagotchi = () => {
         if (response.ok) {
           console.log('Datos del Tamagotchi enviados correctamente.');
         } else {
+          console.log(JSON.stringify(tamagotchiData));
           console.log('Error al enviar los datos del Tamagotchi.');
         }
       })
@@ -123,12 +123,13 @@ const Tamagotchi = () => {
       <Link to='/'> <button className='flex mb-5'>Return</button></Link>
       {!isName && (
         <div>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name" className="mr-4 font-bold">Name:</label>
           <input
             id="name"
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
+            className='text-black p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300'
           />
           <button onClick={handleStart}>Start</button>
         </div>

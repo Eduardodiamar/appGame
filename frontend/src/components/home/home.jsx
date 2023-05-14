@@ -25,9 +25,8 @@ const Home = () => {
         </ul>
       </nav>
       <div>
-        <h2 className='mt-5'>Records:</h2>
         <Link to="/records">
-          <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-3">
+          <button className="bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 mt-5 rounded">
             Records
           </button>
         </Link>
